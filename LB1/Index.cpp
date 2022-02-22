@@ -1,8 +1,8 @@
 #include <windows.h>; // підключення бібліотеки з функціями API
 // Глобальні змінні:
 HINSTANCE hInst; //Дескриптор програми
-LPCTSTR szWindowClass = "QWERTY";
-LPCTSTR szTitle = "ПЕРША ПРОГРАМА";
+LPCTSTR szWindowClass = "Лаба 1";
+LPCTSTR szTitle = "ЛБ 1";
 // Попередній опис функцій
 ATOM MyRegisterClass(HINSTANCE hInstance);
 BOOL InitInstance(HINSTANCE, int);
@@ -39,7 +39,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.hInstance = hInstance; //дескриптор програми
 	wcex.hIcon = LoadIcon(NULL, IDI_HAND); //визначення іконки
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW); //визначення курсору
-	wcex.hbrBackground = GetSysColorBrush(COLOR_WINDOW + 1); //установка фону
+	wcex.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); //установка фону
 	wcex.lpszMenuName = NULL; //визначення меню
 	wcex.lpszClassName = szWindowClass; //ім’я класу
 	wcex.hIconSm = NULL;
@@ -84,9 +84,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_PAINT: //Перемалювати вікно
 		hdc = BeginPaint(hWnd, &ps); //Почати графічний вивід
-		GetClientRect(hWnd, &rt); //Область вікна для малювання
-		DrawText(hdc, "Hellow world!", -1, &rt, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
-		EndPaint(hWnd, &ps); //Закінчити графічний вивід
+		//GetClientRect(hWnd, &rt); //Область вікна для малювання
+		//DrawText(hdc, "Hel", -1, &rt, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+		//EndPaint(hWnd, &ps); //Закінчити графічний вивід
 		break;
 	case WM_DESTROY: //Завершення роботи
 		PostQuitMessage(0);
